@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "微博批量删除",
+    "version": "1.0",
+    "description": "批量删除微博扩展",
+    "icons": {},
+    "browser_action": {
+        "default_title": "微博",
+        "default_popup": "index.html"
+    },
+    
+    "content_scripts": [
+        {
+            "matches": [
+                "*://weibo.com/*",
+                "*://weibo.com/*/*",
+                "*://weibo.com/"
+            ],
+            "js": [
+                "js/del.js",
+                "js/jq.js"
+            ],
+            "css":[
+                "css/del.css"
+            ]
+        }
+    ]
+}

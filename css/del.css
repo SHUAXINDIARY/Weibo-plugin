@@ -1,0 +1,32 @@
+/* 删除&停止按钮 */
+.del_btn {
+  width: 70px;
+  cursor: pointer;
+  line-height: 57px;
+}
+/* 确认弹框样式 */
+.del_confirm_panel {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  width: 300px;
+  height: 100px;
+  background-color: #ffffff;
+  box-shadow: 0 15px 15px 0 rgba(15, 37, 64, 0.1);
+  border-radius: 20px;
+  position: fixed;
+  margin: auto;
+  top: 100px;
+  right: 0;
+  left: 0;
+  display: none;
+  transform: all 0.5s;
+  z-index: 9999;
+}
+.del_btn_ist {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
