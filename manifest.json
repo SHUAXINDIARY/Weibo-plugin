@@ -17,8 +17,7 @@
                 "*://weibo.com/"
             ],
             "js": [
-                "js/del.js",
-                "js/jq.js"
+                "js/del.js"
             ],
             "css":[
                 "css/del.css"

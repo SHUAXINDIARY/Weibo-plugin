@@ -10,28 +10,42 @@ const repeat = function (fn, time) {
 const start = () => {
     timeId = repeat(() => {
         // 获取点击更多
-        let more = $('i[class="woo-font woo-font--angleDown morepop_action_bk3Fq"]');
-        if (more && more[0]) {
-            more[0].click()
-        }else{
-            alert("当前页删除完成")
-        }
-        // 获取删除
-        let del = $(
-            'div[class="woo-box-flex woo-box-alignCenter woo-pop-item-main"]'
-        )[6]
-        if (del) {
-            // 点击删除
-            del.click();
-        }
-        // 获取确定
-        let sure = $(
-            'button[class="woo-button-main woo-button-flat woo-button-primary woo-button-m woo-button-round woo-dialog-btn"]'
-        )
-        if (sure.text().trim() === '确定') {
-            // 点击确定
-            sure.click()
-        }
+        setTimeout(() => {
+            let more = document.querySelectorAll('i[class="woo-font woo-font--angleDown morepop_action_bk3Fq"]');
+            if (more && more[0]) {
+                more[0].click()
+            } else {
+                queueMicrotask(() => {
+                    alert("当前页删除完成")
+                    clearTimeout(timeId)
+                })
+            }
+        }, 0)
+        // 插入到点击更多之后执行
+        setTimeout(() => {
+            // 获取删除
+            let del = document.querySelectorAll(
+                'div[class="woo-box-flex woo-box-alignCenter woo-pop-item-main"]'
+            )[6]
+            if (del) {
+                // 点击删除
+                // queueMicrotask(() => {
+                del.click();
+                // })
+            }
+        }, 0)
+        // 插入到点击删除之后执行
+        setTimeout(() => {
+            // 获取确定
+            let sure = document.querySelector(
+                'button[class="woo-button-main woo-button-flat woo-button-primary woo-button-m woo-button-round woo-dialog-btn"]'
+            )
+            if (sure && sure.textContent.trim() === '确定') {
+                // 点击确定
+                sure.click()
+            }
+        }, 0)
+
     }, 1500)
 }
 /**
@@ -130,6 +144,6 @@ window.addEventListener('keydown', (e) => {
     } = e
     if (keyCode === 27) clearTimeout(timeId)
 })
-window.addEventListener('scroll',()=>{
+window.addEventListener('scroll', () => {
     closeConfirmPanel()
 })
